@@ -9,12 +9,7 @@ const client = new Client({
 
 client.once("clientReady", (readyClient) => {
   console.log("Discord bot is ready!");
-  (async () => {
-    const guilds = await readyClient.guilds.fetch();
-    guilds.forEach(async (guild) => {
-      await deployCommands({ guildId: guild.id });
-    });
-  })();
+  deployCommands({ guildId: config.DISCORD_GUILD_ID });
 
   readyClient.user.setPresence({
     activities: [{ name: "EduTools", type: 0 }],
