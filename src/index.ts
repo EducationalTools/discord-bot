@@ -7,8 +7,14 @@ const client = new Client({
   intents: ["Guilds", "GuildMessages", "DirectMessages"],
 });
 
-client.once("clientReady", () => {
+client.once("clientReady", (readyClient) => {
   console.log("Discord bot is ready!");
+  (async () => {
+    const guilds = await readyClient.guilds.fetch();
+    guilds.forEach(async (guild) => {
+      await deployCommands({ guildId: guild.id });
+    });
+  })();
 });
 
 client.on("guildCreate", async (guild) => {
