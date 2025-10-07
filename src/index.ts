@@ -1,10 +1,15 @@
-import { Client, PresenceUpdateStatus } from "discord.js";
+import { Client, GatewayIntentBits, PresenceUpdateStatus } from "discord.js";
 import { deployCommands } from "./deploy-commands";
 import { commands } from "./commands";
 import { config } from "./config";
 
 const client = new Client({
-  intents: ["Guilds", "GuildMessages", "DirectMessages"],
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.DirectMessages,
+    GatewayIntentBits.MessageContent,
+  ],
 });
 
 client.once("clientReady", (readyClient) => {
