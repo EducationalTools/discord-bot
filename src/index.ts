@@ -78,8 +78,8 @@ client.once("clientReady", (readyClient) => {
       };
       let message = messages.first();
       if (message.embeds == messageData.embeds) {
-        await message.delete();
-        await channel.send();
+        await message?.delete();
+        await channel.send(messageData);
       }
     }
   })();
