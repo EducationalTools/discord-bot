@@ -15,6 +15,8 @@ client.once("clientReady", (readyClient) => {
       await deployCommands({ guildId: guild.id });
     });
   })();
+
+  readyClient.user.setActivity("Doing nothing", { type: 4 });
 });
 
 client.on("guildCreate", async (guild) => {
