@@ -33,14 +33,6 @@ client.once("clientReady", (readyClient) => {
       const messages = await channel.messages.fetch({ limit: 1 });
       const messageData = {
         embeds: [
-          //           {
-          //             title: "Privacy",
-          //             description: `## Logging
-          // We store audit logs using Sapphire, and use them for moderation. Only users with the <@&1419511929101221962> role can access them. We log almost everything apart from message deletes and edits, because I think that is a privacy violation.
-          // ## Bots
-          // This server has a few bots on it, including <@437808476106784770>, <@356268235697553409> and <@678344927997853742> which all have their own privacy policies. If you care about privacy, you probably ~~shouldn't be using discord~~ should read their privacy policies.`,
-          //             color: 3447003,
-          //           },
           {
             title: "Privacy",
             description: `## Logging
@@ -48,6 +40,13 @@ We store audit logs using Sapphire, and use them for moderation. Only users with
 ## Bots
 This server has a few bots on it, including <@437808476106784770>, <@356268235697553409> and <@678344927997853742> which all have their own privacy policies. If you care about privacy, you probably ~~shouldn't be using discord~~ should read their privacy policies.`,
             color: 3066993,
+          },
+          {
+            title: "Guide",
+            description: `Chat about whatever in <#1419511214798541015>
+Other ways to access EduTools are in <#1420341091118481518>
+If you need help with EduTools, you can ask in <#1423490153137049680>`,
+            color: 3447003,
           },
           {
             title: "Rules",
