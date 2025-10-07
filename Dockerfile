@@ -1,4 +1,5 @@
 FROM node:latest
+ENV CI=true
 RUN corepack enable pnpm
 
 RUN mkdir -p /usr/src/bot
