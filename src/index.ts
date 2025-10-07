@@ -16,7 +16,7 @@ client.once("clientReady", (readyClient) => {
     });
   })();
 
-  readyClient.user.setActivity("Doing nothing", { type: 4 });
+  readyClient.user.setActivity("EduTools", { type: 0 });
 });
 
 client.on("guildCreate", async (guild) => {
