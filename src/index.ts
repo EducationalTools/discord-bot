@@ -1,4 +1,4 @@
-import { Client } from "discord.js";
+import { Client, PresenceUpdateStatus } from "discord.js";
 import { deployCommands } from "./deploy-commands";
 import { commands } from "./commands";
 import { config } from "./config";
@@ -16,7 +16,10 @@ client.once("clientReady", (readyClient) => {
     });
   })();
 
-  readyClient.user.setActivity("EduTools", { type: 0 });
+  readyClient.user.setPresence({
+    activities: [{ name: "EduTools", type: 0 }],
+    status: PresenceUpdateStatus.Online,
+  });
 });
 
 client.on("guildCreate", async (guild) => {
