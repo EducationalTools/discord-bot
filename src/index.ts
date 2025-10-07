@@ -17,10 +17,6 @@ client.once("clientReady", (readyClient) => {
   });
 });
 
-client.on("guildCreate", async (guild) => {
-  await deployCommands({ guildId: guild.id });
-});
-
 client.on("interactionCreate", async (interaction) => {
   if (!interaction.isCommand()) {
     return;
