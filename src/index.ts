@@ -30,8 +30,8 @@ client.once("clientReady", (readyClient) => {
       "bulkDelete" in channel &&
       typeof channel.bulkDelete === "function"
     ) {
-      await channel.bulkDelete(100);
-      await channel.send({
+      const messages = await channel.messages.fetch({ limit: 1 });
+      const messageData = {
         embeds: [
           //           {
           //             title: "Privacy",
@@ -44,23 +44,23 @@ client.once("clientReady", (readyClient) => {
           {
             title: "Privacy",
             description: `## Logging
-We store audit logs using Sapphire, and use them for moderation. Only users with the <@&1419511929101221962> role can access them. We log almost everything apart from message deletes and edits, because I think that is a privacy violation.
-## Bots
-This server has a few bots on it, including <@437808476106784770>, <@356268235697553409> and <@678344927997853742> which all have their own privacy policies. If you care about privacy, you probably ~~shouldn't be using discord~~ should read their privacy policies.`,
+      We store audit logs using Sapphire, and use them for moderation. Only users with the <@&1419511929101221962> role can access them. We log almost everything apart from message deletes and edits, because I think that is a privacy violation.
+      ## Bots
+      This server has a few bots on it, including <@437808476106784770>, <@356268235697553409> and <@678344927997853742> which all have their own privacy policies. If you care about privacy, you probably ~~shouldn't be using discord~~ should read their privacy policies.`,
             color: 3066993,
           },
           {
             title: "Rules",
             description: `1. Treat everyone with respect. Absolutely no harassment, witch hunting, sexism, racism, or hate speech will be tolerated.2. Swearing is allowed, as long as it follows the above rule.
-3. No spam or self-promotion (server invites, advertisements, etc) without permission from a staff member. This includes DMing fellow members.
-4. No age-restricted or obscene content. This includes text, images, or links featuring nudity, sex, hard violence, or other graphically disturbing content.
-5. If you see something against the rules or something that makes you feel unsafe, let us know by right clicking, pressing apps, then report to mods. We want this server to be a welcoming space!
-6. Do not attempt to circumvent auto moderation. ~~I know this is a server for a website that is built to circumvent internet filters, but~~ the auto moderation is there for a reason.
-7. Don't ping people randomly with no reason.
-8. You can ping me (<@907855965934714930>), I don't mind.
-9. English only. This makes it easier to moderate.
+      3. No spam or self-promotion (server invites, advertisements, etc) without permission from a staff member. This includes DMing fellow members.
+      4. No age-restricted or obscene content. This includes text, images, or links featuring nudity, sex, hard violence, or other graphically disturbing content.
+      5. If you see something against the rules or something that makes you feel unsafe, let us know by right clicking, pressing apps, then report to mods. We want this server to be a welcoming space!
+      6. Do not attempt to circumvent auto moderation. ~~I know this is a server for a website that is built to circumvent internet filters, but~~ the auto moderation is there for a reason.
+      7. Don't ping people randomly with no reason.
+      8. You can ping me (<@907855965934714930>), I don't mind.
+      9. English only. This makes it easier to moderate.
 
-Any violation of these rules will result in you being warned, and maybe even kicked or banned.`,
+      Any violation of these rules will result in you being warned, and maybe even kicked or banned.`,
             color: 16711680,
           },
           {
@@ -75,7 +75,12 @@ Any violation of these rules will result in you being warned, and maybe even kic
             },
           },
         ],
-      });
+      };
+      let message = messages.first();
+      if (message.embeds == messageData.embeds) {
+        await message.delete();
+        await channel.send();
+      }
     }
   })();
 });
