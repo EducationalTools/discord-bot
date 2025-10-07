@@ -77,6 +77,11 @@ client.once("clientReady", (readyClient) => {
         ],
       };
       let message = messages.first();
+      if (message?.embeds.length != messageData.embeds.length) {
+        await message?.delete();
+        await channel.send(messageData);
+        return;
+      }
       message?.embeds.forEach(async (embed, embedIndex) => {
         if (
           embed.description &&
