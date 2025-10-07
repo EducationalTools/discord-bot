@@ -77,10 +77,16 @@ client.once("clientReady", (readyClient) => {
         ],
       };
       let message = messages.first();
-      if (message.embeds == messageData.embeds) {
-        await message?.delete();
-        await channel.send(messageData);
-      }
+      message?.embeds.forEach(async (embed, embedIndex) => {
+        if (
+          embed.description &&
+          embed.description !== messageData.embeds[embedIndex].description
+        ) {
+          await message?.delete();
+          await channel.send(messageData);
+          return;
+        }
+      });
     }
   })();
 });
