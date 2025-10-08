@@ -67,12 +67,6 @@ Any violation of these rules will result in you being warned, and maybe even kic
             description: "```\nhttps://discord.gg/AFec9wNar8\n```",
             color: 16777215,
           },
-          {
-            timestamp: "2025-10-08T09:34:33.906Z",
-            footer: {
-              text: "Last updated",
-            },
-          },
         ],
       };
       let message = messages.first();
