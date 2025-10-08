@@ -38,7 +38,7 @@ client.once("clientReady", (readyClient) => {
             description: `## Logging
 We store audit logs using Sapphire, and use them for moderation. Only users with the <@&1419511929101221962> role can access them. We log almost everything apart from message deletes and edits, because I think that is a privacy violation.
 ## Bots
-This server has a few bots on it, including <@437808476106784770>, <@356268235697553409> and <@678344927997853742> which all have their own privacy policies. If you care about privacy, you probably ~~shouldn't be using discord~~ should read their privacy policies.`,
+This server has a few bots on it, including <@437808476106784770> and <@678344927997853742> which all have their own privacy policies. If you care about privacy, you probably ~~shouldn't be using discord~~ should read their privacy policies.`,
             color: 3066993,
           },
           {
